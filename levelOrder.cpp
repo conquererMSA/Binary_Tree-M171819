@@ -11,6 +11,23 @@ class Node {
         this->right=NULL;
     }
 };
+void levelOrder(Node* root){
+     queue<Node*> q;
+     q.push(root);
+     while(!q.empty()){
+        // 1. ber kore ana.
+        Node* f=q.front();
+        q.pop();
+
+        //2. jabotio kaj kora
+        cout<<f->val<<" ";
+
+        //3. children queue te rakha
+        // if(f->right) q.push(f->right);10 30 20 50 90 40 80 70 100 60
+        if(f->left) q.push(f->left);
+        if(f->right) q.push(f->right);
+     }
+}
 int main(){
     Node* root=new Node(10);
     Node* a=new Node(20);
@@ -33,5 +50,6 @@ int main(){
     b->right=d;
     d->left=f;
     d->right=g;
+   levelOrder(root);
     return 0;
 }

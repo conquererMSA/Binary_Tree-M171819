@@ -11,6 +11,12 @@ class Node {
         this->right=NULL;
     }
 };
+void postOrderTraversalOfTree(Node* root){
+    if(root==NULL) return;
+    postOrderTraversalOfTree(root->left);
+    postOrderTraversalOfTree(root->right);
+    cout<<root->val<<" ";
+}
 int main(){
     Node* root=new Node(10);
     Node* a=new Node(20);
@@ -33,5 +39,6 @@ int main(){
     b->right=d;
     d->left=f;
     d->right=g;
+    postOrderTraversalOfTree(root);
     return 0;
 }
